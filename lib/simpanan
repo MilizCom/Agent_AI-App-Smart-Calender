@@ -1,0 +1,120 @@
+// import 'dart:convert';
+// import 'package:flutter/material.dart';
+// import 'package:http/http.dart' as http;
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Chat with AI (OpenRouter)',
+//       theme: ThemeData(primarySwatch: Colors.indigo),
+//       home: ChatScreen(),
+//     );
+//   }
+// }
+
+// class ChatScreen extends StatefulWidget {
+//   @override
+//   _ChatScreenState createState() => _ChatScreenState();
+// }
+
+// class _ChatScreenState extends State<ChatScreen> {
+//   final _controller = TextEditingController();
+//   final List<Map<String, String>> _messages = [];
+
+//   Future<String> fetchAIResponse(String prompt) async {
+//     final url = Uri.parse('https://openrouter.ai/api/v1/chat/completions');
+//     final response = await http.post(
+//       url,
+//       headers: {
+//         'Authorization': 'Bearer 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', // Ganti dengan API key OpenRouter
+//         'Content-Type': 'application/json',
+//       },
+//       body: jsonEncode({
+//         "model": "openai/gpt-3.5-turbo",
+//         "messages": [
+//           {"role": "user", "content": prompt}
+//         ],
+//       }),
+//     );
+
+//     if (response.statusCode == 200) {
+//       final data = json.decode(response.body);
+//       return data['choices'][0]['message']['content'];
+//     } else {
+//       return 'Gagal mendapatkan respons: ${response.statusCode}';
+//     }
+//   }
+
+//   void _sendMessage() async {
+//     final input = _controller.text.trim();
+//     if (input.isEmpty) return;
+
+//     setState(() {
+//       _messages.add({'role': 'user', 'text': input});
+//     });
+//     _controller.clear();
+
+//     final aiResponse = await fetchAIResponse(input);
+
+//     setState(() {
+//       _messages.add({'role': 'assistant', 'text': aiResponse});
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Chat AI via OpenRouter')),
+//       body: Column(
+//         children: [
+//           Expanded(
+//             child: ListView.builder(
+//               padding: EdgeInsets.all(12),
+//               itemCount: _messages.length,
+//               itemBuilder: (context, index) {
+//                 final msg = _messages[index];
+//                 final isUser = msg['role'] == 'user';
+//                 return Align(
+//                   alignment:
+//                       isUser ? Alignment.centerRight : Alignment.centerLeft,
+//                   child: Container(
+//                     margin: EdgeInsets.symmetric(vertical: 4),
+//                     padding: EdgeInsets.all(12),
+//                     decoration: BoxDecoration(
+//                       color: isUser ? Colors.indigo[200] : Colors.grey[300],
+//                       borderRadius: BorderRadius.circular(12),
+//                     ),
+//                     child: Text(msg['text'] ?? ''),
+//                   ),
+//                 );
+//               },
+//             ),
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+//             child: Row(
+//               children: [
+//                 Expanded(
+//                   child: TextField(
+//                     controller: _controller,
+//                     decoration:
+//                         InputDecoration(hintText: 'Tulis pesan di sini...'),
+//                   ),
+//                 ),
+//                 IconButton(
+//                   icon: Icon(Icons.send),
+//                   onPressed: _sendMessage,
+//                 )
+//               ],
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

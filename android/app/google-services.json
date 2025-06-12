@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "753093451092",
+    "firebase_url": "https://agent-ai-calender-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "agent-ai-calender",
+    "storage_bucket": "agent-ai-calender.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753093451092:android:420509bae684f1e7e23cc1",
+        "android_client_info": {
+          "package_name": "com.example.agent_ai_calender"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo5lUvIH_UGhDUvFXkRjqs8yCNbeKPjFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753093451092:android:5ea53e5c98a80b66e23cc1",
+        "android_client_info": {
+          "package_name": "com.example.iotautounlockgateapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo5lUvIH_UGhDUvFXkRjqs8yCNbeKPjFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
