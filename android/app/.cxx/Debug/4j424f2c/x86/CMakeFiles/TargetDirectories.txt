@@ -1,0 +1,2 @@
+D:/__Development/Flutter/Agent_AI-App-Smart-Calender/android/app/.cxx/Debug/4j424f2c/x86/CMakeFiles/edit_cache.dir
+D:/__Development/Flutter/Agent_AI-App-Smart-Calender/android/app/.cxx/Debug/4j424f2c/x86/CMakeFiles/rebuild_cache.dir
