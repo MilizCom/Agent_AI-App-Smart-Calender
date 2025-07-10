@@ -27,9 +27,23 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
+
       final res = await firestore.loginUser(userData);
+
       if (res.statusCode == 200) {
-        Navigator.pushNamed(context, '/profile');
+        // Ambil data user setelah login
+        final profileData = await firestore.getUserData();
+
+        final isProfileComplete = profileData['pekerjaan'] != null &&
+            profileData['pekerjaan'].toString().isNotEmpty &&
+            profileData['schedules'] != null &&
+            (profileData['schedules'] as Map).isNotEmpty;
+
+        if (isProfileComplete) {
+          Navigator.pushNamed(context, '/calendar');
+        } else {
+          Navigator.pushNamed(context, '/profile');
+        }
       } else {
         debugShow.showBottom(res.body);
       }
@@ -63,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        spacing: 8.0,
+                        // KOspacing: 8.0,
                         children: [
                           TextFieldWithLeading().build(
                             'Email',

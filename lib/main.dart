@@ -1,11 +1,14 @@
 import 'package:agent_ai_calender/pages/calendar_page.dart';
 import 'package:agent_ai_calender/pages/login_page.dart';
-import 'package:agent_ai_calender/pages/profile_page.dart';
+import 'package:agent_ai_calender/pages/profile_form_page.dart';
 import 'package:agent_ai_calender/pages/prompt_page.dart';
 import 'package:agent_ai_calender/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'pages/ProfilePage.dart';
+import 'pages/agenda_form_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +42,9 @@ class MainApp extends StatelessWidget {
         '/calendar': (context) => CalendarPage(),
         '/profile': (context) => ProfilePage(),
         '/prompt': (context) => PromptPage(),
+        '/add_agenda': (context) => AgendaFormPage(),
+        '/profilePage': (context) => MyProfilePage(),
+        // '/edit_agenda': (context) => EditAgendaPage(),
       },
       home: isLoggedIn ? CalendarPage() : LoginPage(),
     );

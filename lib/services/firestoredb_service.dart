@@ -80,14 +80,12 @@ class FirestoreDatabase {
       if (userCredential.user == null) {
         return http.Response('User not authenticated', 401);
       }
-      print('userData: $userData');
-      bool lognedIn = await saveToFireStore(userData);
-      if (lognedIn) {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setBool('isLoggedIn', true);
-        return http.Response('Login successful', 200);
-      }
-      return http.Response('Failed to save login', 400);
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isLoggedIn', true);
+
+      // ❌ Jangan panggil saveToFireStore di sini
+      return http.Response('Login successful', 200);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         return http.Response('No user found for that email.', 400);
